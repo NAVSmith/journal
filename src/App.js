@@ -50,40 +50,51 @@ function App() {
 
   return (
     <Fragment>
-    <div className="app">
-      <header className="App-header">
+     <div className="app">
+      <header className="App-header" style={{ background: '#252629', color: '#ffffff' }}>
         <h1>Journal App</h1>
       </header>
       <main>
-        <section className="entry-form">
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Title"
-              value={title}
-              onChange={handleTitleChange}
-            />
-            <input
-              type="date"
-              placeholder="Date"
-              value={date}
-              onChange={handleDateChange}
-            />
-            <textarea
-              placeholder="Text"
-              value={text}
-              onChange={handleTextChange}
-            ></textarea>
-            <button type="submit">Add Entry</button>
+        <section className="entry-form" style={{ background: '#ffffff', color: '#252629' }}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
+          <label htmlFor="title">Title:</label>
+          <input
+            type="text"
+            id="title"
+            placeholder="Title"
+            value={title}
+            onChange={handleTitleChange}
+            style={{ background: '#e4e8f0', color: '#252629' }}
+          />
+          <label htmlFor="date">Date:</label>
+          <input
+            type="date"
+            id="date"
+            placeholder="Date"
+            value={date}
+            onChange={handleDateChange}
+            style={{ background: '#e4e8f0', color: '#252629' }}
+          />
+          <label htmlFor="text">Text:</label>
+          <textarea
+            id="text"
+            placeholder="Text"
+            value={text}
+            onChange={handleTextChange}
+            style={{ background: '#e4e8f0', color: '#252629' }}
+          ></textarea>
+          <button type="submit" style={{ background: '#ff4a11', color: '#ffffff' }}>Add Entry</button>
           </form>
         </section>
-        <section className="entries-section">
+        <section className="entries-section" style={{ background: '#ffffff', color: '#252629' }}>
           <div className="tab-bar">
             <div className="tab">
-              <span className="badge">{entries.length}</span>
+              <span className="badge" style={{ background: '#ff4a11', color: '#ffffff' }}>{entries.length}</span>
             </div>
             <div className="tab">
-              <span className="badge">{entries.filter(entry => entry.favorite).length}</span>
+              <span className="badge" style={{ background: '#ff4a11', color: '#ffffff' }}>
+                {entries.filter(entry => entry.favorite).length}
+              </span>
             </div>
           </div>
           <ul className="entry-list">
@@ -92,7 +103,10 @@ function App() {
                 <h3>{entry.title}</h3>
                 <p>{entry.date}</p>
                 <p>{entry.text}</p>
-                <button onClick={() => handleFavoriteToggle(index)}>
+                <button
+                  onClick={() => handleFavoriteToggle(index)}
+                  style={{ background: '#ff4a11', color: '#ffffff' }}
+                >
                   {entry.favorite ? '⭐️' : '☆'}
                 </button>
               </li>
@@ -100,10 +114,10 @@ function App() {
           </ul>
         </section>
       </main>
-      <footer>
+      <footer style={{ background: '#252629', color: '#ffffff' }}>
         <p>Journal App Footer</p>
       </footer>
-    </div>
+    </div>    
     </Fragment>
   );
 }
