@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React ,{ Fragment, useState } from 'react';
+import Form from './components/form/index.js'
 
 function App() {
   const [entries, setEntries] = useState([]);
@@ -8,20 +9,20 @@ function App() {
   const [date, setDate] = useState('');
   const [text, setText] = useState('');
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
   };
 
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
+  const handleDateChange = (event) => {
+    setDate(event.target.value);
   };
 
-  const handleTextChange = (e) => {
-    setText(e.target.value);
+  const handleTextChange = (event) => {
+    setText(event.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     // Create a new entry object
     const newEntry = {
@@ -50,14 +51,14 @@ function App() {
 
   return (
     <Fragment>
-     <div className="app">
-      <header className="App-header" style={{ background: '#252629', color: '#ffffff' }}>
+     <article className="app">
+      <header className="App-header">
         <h1>Journal App</h1>
       </header>
       <main>
-        <section className="entry-form" style={{ background: '#ffffff', color: '#252629' }}>
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
-          <label htmlFor="title">Title:</label>
+        <Form className="entry-form" onSubmit={handleSubmit}>
+        <fieldset className='input_group'>  
+        <label htmlFor="title">Title:</label>
           <input
             type="text"
             id="title"
@@ -66,15 +67,19 @@ function App() {
             onChange={handleTitleChange}
             style={{ background: '#e4e8f0', color: '#252629' }}
           />
-          <label htmlFor="date">Date:</label>
-          <input
-            type="date"
-            id="date"
-            placeholder="Date"
-            value={date}
-            onChange={handleDateChange}
-            style={{ background: '#e4e8f0', color: '#252629' }}
-          />
+          </fieldset>
+          <fieldset className='input_group'>
+            <label htmlFor="date">Date:</label>
+            <input
+              type="date"
+              id="date"
+              placeholder="Date"
+              value={date}
+              onChange={handleDateChange}
+              style={{ background: '#e4e8f0', color: '#252629' }}
+            />
+          </fieldset>
+          <fieldset className='input_group'>  
           <label htmlFor="text">Text:</label>
           <textarea
             id="text"
@@ -83,9 +88,9 @@ function App() {
             onChange={handleTextChange}
             style={{ background: '#e4e8f0', color: '#252629' }}
           ></textarea>
+          </fieldset>
           <button type="submit" style={{ background: '#ff4a11', color: '#ffffff' }}>Add Entry</button>
-          </form>
-        </section>
+        </Form>
         <section className="entries-section" style={{ background: '#ffffff', color: '#252629' }}>
           <div className="tab-bar">
             <div className="tab">
@@ -117,7 +122,7 @@ function App() {
       <footer style={{ background: '#252629', color: '#ffffff' }}>
         <p>Journal App Footer</p>
       </footer>
-    </div>    
+    </article>    
     </Fragment>
   );
 }
