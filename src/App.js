@@ -93,7 +93,7 @@ function App() {
                 <p>{entry.date}</p>
                 <p>{entry.text}</p>
                 <button onClick={() => handleFavoriteToggle(index)}>
-                  {entry.favorite ? '❤️' : '♡'}
+                  {entry.favorite ? '⭐️' : '☆'}
                 </button>
               </li>
             ))}
