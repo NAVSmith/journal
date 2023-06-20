@@ -1,24 +1,16 @@
-:root {
-  /* Used for texts (+ footer background) */
-  --color-granite: #252629;
-  /* Used for backgrounds (+ footer text color) */
-  --color-foam: #ffffff;
-  /* Used for buttons, icons, etc. */
-  --color-nemo: #ff4a11;
-  /* active color for buttons, icons, etc. */
-  --color-nemo-mid: #ff5c29;
-  /* hover color for buttons, icons, etc. */
-  --color-nemo-dark: #e5430f;
-  /* Used for borders and some backgrounds */
-  --color-water-10: #e4e8f0;
-}
-
-
 .app {
-  text-align: center;
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+  max-width: 368px;
+  margin: 0 auto;
+  gap: 32px;
 }
 
-.App-header {
-  background: var(--color-foam);
-  color: var(--color-granite);
+.app__main {
+  width: 100%;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
 }
