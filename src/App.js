@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React ,{ Fragment, useState } from 'react';
+import Form from './components/form/index.js'
 
 function App() {
   const [entries, setEntries] = useState([]);
@@ -8,20 +9,20 @@ function App() {
   const [date, setDate] = useState('');
   const [text, setText] = useState('');
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
   };
 
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
+  const handleDateChange = (event) => {
+    setDate(event.target.value);
   };
 
-  const handleTextChange = (e) => {
-    setText(e.target.value);
+  const handleTextChange = (event) => {
+    setText(event.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     // Create a new entry object
     const newEntry = {
@@ -50,40 +51,55 @@ function App() {
 
   return (
     <Fragment>
-    <div className="app">
+     <article className="app">
       <header className="App-header">
         <h1>Journal App</h1>
       </header>
       <main>
-        <section className="entry-form">
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Title"
-              value={title}
-              onChange={handleTitleChange}
-            />
+        <Form className="entry-form" onSubmit={handleSubmit}>
+        <fieldset className='input_group'>  
+        <label htmlFor="title">Title:</label>
+          <input
+            type="text"
+            id="title"
+            placeholder="Title"
+            value={title}
+            onChange={handleTitleChange}
+            style={{ background: '#e4e8f0', color: '#252629' }}
+          />
+          </fieldset>
+          <fieldset className='input_group'>
+            <label htmlFor="date">Date:</label>
             <input
               type="date"
+              id="date"
               placeholder="Date"
               value={date}
               onChange={handleDateChange}
+              style={{ background: '#e4e8f0', color: '#252629' }}
             />
-            <textarea
-              placeholder="Text"
-              value={text}
-              onChange={handleTextChange}
-            ></textarea>
-            <button type="submit">Add Entry</button>
-          </form>
-        </section>
-        <section className="entries-section">
+          </fieldset>
+          <fieldset className='input_group'>  
+          <label htmlFor="text">Text:</label>
+          <textarea
+            id="text"
+            placeholder="Text"
+            value={text}
+            onChange={handleTextChange}
+            style={{ background: '#e4e8f0', color: '#252629' }}
+          ></textarea>
+          </fieldset>
+          <button type="submit" style={{ background: '#ff4a11', color: '#ffffff' }}>Add Entry</button>
+        </Form>
+        <section className="entries-section" style={{ background: '#ffffff', color: '#252629' }}>
           <div className="tab-bar">
             <div className="tab">
-              <span className="badge">{entries.length}</span>
+              <span className="badge" style={{ background: '#ff4a11', color: '#ffffff' }}>{entries.length}</span>
             </div>
             <div className="tab">
-              <span className="badge">{entries.filter(entry => entry.favorite).length}</span>
+              <span className="badge" style={{ background: '#ff4a11', color: '#ffffff' }}>
+                {entries.filter(entry => entry.favorite).length}
+              </span>
             </div>
           </div>
           <ul className="entry-list">
@@ -92,18 +108,21 @@ function App() {
                 <h3>{entry.title}</h3>
                 <p>{entry.date}</p>
                 <p>{entry.text}</p>
-                <button onClick={() => handleFavoriteToggle(index)}>
-                  {entry.favorite ? '❤️' : '♡'}
+                <button
+                  onClick={() => handleFavoriteToggle(index)}
+                  style={{ background: '#ff4a11', color: '#ffffff' }}
+                >
+                  {entry.favorite ? '⭐️' : '☆'}
                 </button>
               </li>
             ))}
           </ul>
         </section>
       </main>
-      <footer>
+      <footer style={{ background: '#252629', color: '#ffffff' }}>
         <p>Journal App Footer</p>
       </footer>
-    </div>
+    </article>    
     </Fragment>
   );
 }
