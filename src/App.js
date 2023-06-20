@@ -50,7 +50,7 @@ function App() {
 
   return (
     <Fragment>
-    <div className="App">
+    <div className="app">
       <header className="App-header">
         <h1>Journal App</h1>
       </header>
