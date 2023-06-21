@@ -32,11 +32,3 @@ export default function EntriesSection() {
     </section>
   );
 }
-
-/*
-- Map over the `entries` array and render each entry in the `EntriesSection` component.
-- Remember to use the `key` prop when mapping over the array.
-- If you are using this template: How can you render a `<Divider />` component between each entry?
-  - Don't break the flexbox layout (a `Fragment` might help)
-  - Avoid having a divider below the last or above the first entry
-*/
